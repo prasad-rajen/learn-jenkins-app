@@ -4,7 +4,6 @@ pipeline {
     environment {
         NETLIFY_SITE_ID = 'ebbd3265-f688-408a-b9de-1e28a5ca3117'
         NETLIFY_AUTH_TOKEN = credentials('netlify-token')
-        CI_ENVIRONMENT_URL = 'https://zesty-pudding-e670a3.netlify.app/'
     }
 
     stages {
