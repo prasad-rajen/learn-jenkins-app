@@ -32,15 +32,13 @@ pipeline {
         stage('Build Docker image') {
             agent {
                 docker {
-                    image 'docker:latest'
+                    image 'my-awscli'
                     reuseNode true
                     args "-u root -v /var/run/docker.sock:/var/run/docker.sock --entrypoint=''"
                 }
             }
             steps {
                 sh '''
-                    apk add --no-cache python3 py3-pip
-                    pip3 install awscli
                     docker build -t $AWS_DOCKER_REGISTRY/$APP_NAME:$REACT_APP_VERSION .
                     aws ecr get-login-password | docker login --username AWS --password-stdin $AWS_DOCKER_REGISTRY 
                     docker push $AWS_DOCKER_REGISTRY/$APP_NAME:$REACT_APP_VERSION 
