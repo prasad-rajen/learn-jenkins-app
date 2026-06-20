@@ -47,7 +47,7 @@ pipeline {
                 docker {
                     image 'my-awscli'
                     reuseNode true
-                    args "-u root --entrypoint=''"
+                    args "--entrypoint=''"
                 }
             }
             steps {
