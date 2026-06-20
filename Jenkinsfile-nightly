@@ -1,0 +1,14 @@
+pipeline {
+    agent any
+
+    stages {
+
+        stage('Build Docker Images') {
+            steps {
+                sh 'docker build -f CI/Dockerfile-playwright -t my-playwright .'
+                sh 'docker build -f CI/Dockerfile -t my-awscli .'
+            }
+
+        }
+    }
+}
